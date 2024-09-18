@@ -11,7 +11,7 @@ Previo a iniciar el desarrollo de software para web usando el framework de NodeJ
 |2.|Inicialización del Proyecto de Fundamentos de JS|✅ Activa|
 
 ### Autor
-Jennifer Bautista Barrios
-Unidad 1
-Aplicaciones Web Orientada a Servicios
-Septiembre 2024
+Jennifer Bautista Barrios.
+Unidad 1.
+Aplicaciones Web Orientada a Servicios.
+Septiembre 2024.
