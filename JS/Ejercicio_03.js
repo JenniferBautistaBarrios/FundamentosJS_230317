@@ -167,3 +167,136 @@ console.table(Pedido)
 delete Pedido.TipoPago
 console.log("Despues de la modificación... ")
 console.table(Pedido)
+
+
+
+console.log(`%c 7.- Métodos para controlar la mutabilidad de los objetos, Congelación (FREEZE)`, style_console);
+//Si deseamos no permitir que los objetos sean modificados ni en estructura, ni en valor, utilizaremos el metodo FREEZE (congelar)
+console.log('La estructura actual del objeto Comprador es:');
+console.table(Comprador);
+Object.freeze(Comprador); //Freeze a objeto Comprador
+//Intentaremos agregar, eliminar o modificar los valores d sus propiedades
+Comprador.FechaUltimaCompra = "05/09/2024 10:15:25";
+delete Comprador.Tipo;
+Comprador.Direccion = "Calle 16 de Septiembre #102, Col. Manantiales, Huauchinango, Puebla, México";
+console.log("Verificamos si se realizaron los cambios en el Objeto Comprador");
+console.table(Comprador);
+
+
+
+console.log(`%c 8.- Métodos para controlar la mutabilidad de los Objetos, Sellado (SEAL)`, style_console);
+//Sin embargo, en el caso de que desearamos poder modificar los valores de las propiedades del Objeto, pero no su estructura, usaremos SEAL
+console.log("Objeto antes de ser modificado:");
+console.table(Pedido);
+//Sellamos el objeto
+Object.seal(Pedido);
+//Intentamos modificar su estructura
+Pedido['FechaPedido'] = "25/09/2024 11:05:03";
+delete Pedido['Cantidad'];
+console.log('Verificamos si se realizaron los cambios en el Objeto Pedido:');
+console.table(Pedido);
+//Ahora intentamos modificar el valor de las propiedades
+Pedido.Cantidad = 5;
+console.log('Verificamos si se realizaron los cambios en el Objeto Pedido:');
+console.table(Pedido);
+
+//Desestructuración de 2 o más Objetos
+console.log(`%c 9.- Desestructuración de 2 o más Objetos`, style_console);
+let {Precio: ProductoPrecio, Marca: ProductoMarca} = Producto;
+let {Correo: clienteCorreo, PaisOrigen: clientePais, SaldoActual: clienteSaldo, Tipo: clienteTipo} = Comprador;
+//Transformar valores cuantitativos en cualitativos
+if (ProductoPrecio>2000) {
+    ProductoPrecio = "Caro";
+} else {
+    ProductoPrecio = "Barato";
+}
+if (clienteSaldo>0) {
+    clienteSaldo = "A favor";
+} else if (clienteSaldo<0) {
+    clienteSaldo = "En contra";
+} else {
+    clienteSaldo = "Sin deuda"
+}
+
+//Transformar valores cualitativos en cuantitativos
+let clienteNivel;
+if (clienteTipo == "Premium")
+    clienteNivel = 1;
+if (clienteTipo == "Freemium")
+    clienteNivel = 2;
+if (clienteTipo == "No identificado")
+    clienteNivel = 3;
+
+//Clasificar al cliente por su País de Origen
+if (clientePais == "Mexico") {
+    clientePais = "Nacional";
+} else {
+    clientePais = "Extranjero";
+}
+
+//OLE - Object Literal Enhancement
+let datosClientesPromociones = {clienteCorreo, clientePais, clienteNivel, clienteSaldo, productoMarca, productoPrecio};
+//El nuevo objeto que creeamos seria un ejemplo de la informacion que enviariamos al area de marketing para la difusión de promociones
+console.log("Los datos del cliente y sus hábitos de compra son:");
+console.table(datosClientesPromociones);
+
+console.log();
+
+//Operaciones sobre Objetos
+//Unión de Objetos
+console.log(`%c 10.- `, style_console);
+
+/* const producto = { //Asignacion de atributos
+    nombre: "Tablet 9\"",
+    marca: "Mac",
+    modelo: "iPad",
+    costoCompra: 11500.25,
+    constoVenta: 15400,
+    disponible: true,
+    SKU: Symbol("ABCDE"),
+    colores: ["Blanco","Negro","Rosa","Azul","Amarillo"] //Arreglo
+}
+//Imprimir el objeto
+ console.warn("----Objetos----")
+ console.log(producto)
+//Los objetos tambien pueden representarse con formato de tabla usando la funcion console.table
+ console.table(producto)
+
+
+//Acceder a las propiedades del producto
+console.warn("Leyendo las Propiedades de un Objeto y sus tipos de dato")
+    console.log(`Nombre del Producto: ${producto.nombre} que es del tipo: ${typeof(producto.nombre)}`);
+    console.log(`Nombre del Producto: ${producto.marca} que es del tipo: ${typeof(producto.marca)}`);
+    console.log(`Nombre del Producto: ${producto.modelo} que es del tipo: ${typeof(producto.modelo)}`);
+    console.log(`Nombre del Producto: ${producto.costoCompra} que es del tipo: ${typeof(producto.costoCompra)}`);
+    console.log(`Nombre del Producto: ${producto.constoVenta} que es del tipo: ${typeof(producto.constoVenta)}`);
+    console.log(`Nombre del Producto: ${producto.disponible} que es del tipo: ${typeof(producto.disponible)}`);
+    console.log(`Nombre del Producto: ${String(producto.SKU)} que es del tipo: ${typeof(producto.SKU)}`);
+    console.log(`Nombre del Producto: ${producto.colores} que es del tipo: ${typeof(producto.colores)}`);
+
+
+ console.log(producto.nombre) // Añadir en cadena los datos del producto
+ console.log(producto.marca)
+ console.log(producto.modelo)
+ console.log(producto.costoCompra)
+ console.log(producto.constoVenta)
+ console.log(producto.disponible)
+ console.log(producto.SKU)
+ console.log(producto.colores)
+
+
+// Desctructuring : Sacar una estructura
+const { nombre ,marca ,modelo } = producto
+console.log(nombre)
+console.log(marca)
+console.log(modelo)
+
+
+// Objet Literarl Enhacement colocar datos dentro de un objeto
+const autenticad = true
+const usuario = "juan"
+const nuevoObjeto = {
+    autenticado: autenticado,
+    usuario: usuario
+}
+console.table(nuevoObjeto); */
