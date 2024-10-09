@@ -6,7 +6,7 @@ html {
 body {
     font-size: 1.6rem;
     font-family: 'Lato', sans-serif;
-    background-color: gray;
+    background-color: rgb(251, 128, 204);
 }
 
 *, *:before, *:after {
@@ -21,18 +21,18 @@ header {
 header h1 {
     text-align: center;
     color: wheat;
-    font-size: 6rem;
+    font-size: 7rem;
 }
 
 header p {
     color:thistle;
     text-align: center;
-    font-size: 3.2rem;
+    font-size: 4.2rem;
 }
 
 header p a {
     text-decoration: none;
-    color:tomato;
+    color:rgb(226, 95, 145);
 }
 
 .DOM {
