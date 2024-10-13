@@ -129,3 +129,202 @@ let asignaGeneracion = (anioNacimiento)=>{
 }
 
 console.log(`Dado que naci en el año 2005 soy de la generación: ${asignaGeneracion(2005)}`)
+
+console.log("%c4.- Manejo de Excepciones (TRY/CATCH)", style_console);
+//En algunas existiran errores que no son culpa del programa, si no del usuario, la red, el S.O. o incluso de un middleware, pero que si duda debemos controlar para evitar las fallas de ejecuciòn.
+// Caso de Prueba 1
+console.log("Intentamos dividir: 0/10, el resultado es:")
+try {
+    let result = 0/10; //dividir 0 entre un entero
+    console.log(result)
+} catch(error) {
+    console.log("Ocurrio un error: "+error.message);
+}
+// Caso de Prueba 2
+console.log("Intentamos dividir: 10/10, el resultado es:")
+try {
+    let result = 10/10;
+    console.log(result)
+} catch(error) {
+    console.log("Ocurrio un error: "+error.message);
+}
+// Caso de Prueba 3
+console.log("Intentamos dividir: \"a\"/10, el resultado es:");
+try {
+    let result = "a"/10; //dividir una letra entre 0
+    console.log(result)
+} catch (error) {
+    console.log("Ocurrio un error: "+error.message);
+}
+// Caso de Prueba 4
+console.log("Intentamos dividir: la variable a / 10, el resultado es:");
+try {
+    let result = a/10; //dividir una variable no definida entre 0
+    console.log(result);
+} catch(error) {
+    console.log("Ocurrio un error: "+error.message);
+}
+// Caso de Prueba 5
+console.log("Intentamos dividir: el valor de la variable x / entre el valor de la variable y, el resultado es:");
+try {
+    let x=8, y=2, result = x/y;
+    console.log(result);
+} catch(error) {
+    console.log("Ocurrio un error: "+error.message);
+}
+console.log("%c5.- Control de ciclos (BREAK / CONTINUE)", style_console);
+//En algunas ocasiones serà importante detener un ciclo de manera abruptua para controlar casos especiales en un ciclo...
+console.log("Vamos a contar del 1 al 10...")
+for (let num=1; num<=10; num++) {
+    console.log(num);
+}
+console.log("Ahora necesitamos lo siguiente: Si se llega a 7 pares de contar... suponiendo que solo por hoy es de mala suerte...")
+for (let num=1; num<=10; num++) {
+    if (num==7) {
+        break;
+    } else {
+        console.log(num);
+    }
+}
+console.log("Ahora necesitamos lo siguiente: Si se llega a 7 se salta ese nùmero y continua")
+for (num=1; num<=10; num++) {
+    if (num==7) {
+        continue;
+    }
+    console.log(num);
+}
+console.log("%c6.- Ciclo Iterativo - (FOR)", style_console);
+//Recorre de manera iterativa (i), de incremental o decremental
+console.log("Los dias de la semana son en orden ascendente:")
+let dias = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+for (let i=0; i<dias.length; i++) {
+    console.log(dias[i])
+}
+console.log("Ahora vamos a imprimir los meses en orden descendente...")
+let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+for (let i=meses.length-1; i>=0; i--) {
+    console.log(meses[i]);
+}
+console.log("%c7.- Ciclo condicional - (WHILE)", style_console);
+//Estos ciclos (BUCLE) dependen de una condiciòn para continuar ejecutandose
+let finDeSemana = false;
+let mensaje = "";
+let j = 0;
+while (j < dias.length) {
+    switch (j) { //Usamos 'j' para que coincida con el ìndice
+        case 0:
+            finDeSemana = true;
+            mensaje = "Hoy es Domingo... zzZ";
+            break;
+        case 1:
+            finDeSemana = false;
+            mensaje = "Hoy es Lunes";
+            break;
+        case 2:
+            finDeSemana = false;
+            mensaje = "Hoy es Martes";
+            break;
+        case 3:
+            finDeSemana = false;
+            mensaje = "Mitad de semana!";
+            break;
+        case 4:
+            finDeSemana = false;
+            mensaje = "Hoy es Jueves";
+            break;
+        case 5:
+            finDeSemana = false;
+            mensaje = "Hoy es Viernes";
+            break;
+        case 6:
+            finDeSemana = true;
+            mensaje = "Hoy es Sabado";
+            break;
+    }
+    if (!finDeSemana) {
+        console.log(`Dìa: ${dias[j]}`);
+        console.log(`Mensaje del dìa: ${mensaje}`);
+    }
+        j++;
+}
+console.log("%c8.- Ciclo Condicionales, que se ejecutan al menos una vez - (DO-WHILE)", style_console);
+// Simulamos una lista de episodios de una temporada
+let episodios = [
+    "Arco 1: La Era Dorada",
+    "Arco 2: Espadachin Oscuro",
+    "Arco 3: Los niños perdidos",
+    "Arco 4: Fantasia",
+    "Arco 5: Halcon Milenario"
+];
+let indice = 0;
+let continuarViendo = true; // Esta variable simula la decision del usuario de continuar viendo
+do {
+    console.log(`Reproduciendo ${episodios[indice]}`);
+    // Simulamos la reproducciòn del episodio
+    indice++;
+    if (indice<episodios.length) {
+        continuarViendo = confirm("¿Deseas continuar con el siguiente arco?");
+    } else {
+        continuarViendo = false;
+    }
+} while (continuarViendo && indice < episodios.length);
+console.log("Fin de la reproducciòn");
+console.log("%c9.- Cìclos para recorrer elementos finitos - (FOR...OF)", style_console);
+//Ciclo para recorrer objetos iterables còmo mapas, arreglos, cadenas y conjuntos de datos
+let seriesTrending = [
+    {nombre: "Invincible", temporadas: 3, totalView: "1.5M", totalReproducidas: "3.0M"},
+    {nombre: "Stranger Things", temporadas: 4, totalView: "6.5M", totalReproducidas: "10M"},
+    {nombre: "Hora de Aventura", temporadas: 10, totalView: "12M", totalReproducidas: "15M"},
+    {nombre: "The Boys", temporadas: 3, totalView: "3.2M", totalReproducidas: "5M"},
+    {nombre: "Loki", temporadas: 2, totalView: "3.5M", totalReproducidas: "6M"}
+];
+//Usando } ! {
+for (let serie of seriesTrending) {
+    console.log(`Serie: ${serie.nombre}, Temporadas: ${serie.temporadas}`);
+}
+//! console.log(`La ultima serie leida fue: ${serie.nombre}`); //No va a funcionar por que la variable serie ya no existe ya que su alcance solo estuvo durante el ciclo
+try {
+    console.log(`La ultima serie leida fue: ${serie.nombre}`);
+} catch(error) {
+    console.log("Mensaje de error: "+error.message)
+}
+console.log("%c10.- Cìclos para recorrer las propiedades de elementos finitos - (FOR...IN)", style_console);
+// Usando for...in para recorrer cada serie
+for (let i in seriesTrending) {
+    console.log(`Serie ${parseInt(i)+1}:`);
+    for (let propiedad in seriesTrending[i]) {
+        console.log(`${propiedad}: ${seriesTrending[i][propiedad]}`);
+    }
+    console.log('------------------');
+}
+console.log("%c11.- Cìclos ininterrumpidos para cada uno de los elementos del arreglo - (FOR EACH)", style_console);
+let seriesTrending2 = [
+    {nombre: "Invincible", temporadas: 3, viewers: 8000000, reproducciones: 10000000},
+    {nombre: "Stranger Things", temporadas: 4, viewers: 6000000, reproducciones: 10000000},
+    {nombre: "Hora de Aventura", temporadas: 10, viewers: 12000000, reproducciones: 15000000},
+    {nombre: "The Boys", temporadas: 3, viewers: 3200000, reproducciones: 5000000},
+    {nombre: "Loki", temporadas: 2, viewers: 3500000, reproducciones: 6000000},
+    {nombre: "The Walking Dead", temporadas: 16, viewers: 16000000, reproducciones: 36000000}
+];
+// Usando forEach para recorrer cada serie y calcular la calificaciòn
+seriesTrending2.forEach((serie, index) => {
+    let calificacion = (serie.reproducciones / serie.viewers).toFixed(2); // Calcula la calificacion y la redondea a 2 decimales
+    console.log(`Serie: ${index+1}:`);
+    console.log(`Nombre: ${serie.nombre}:`);
+    console.log(`Temporadas: ${serie.temporadas}:`);
+    console.log(`Viewers: ${serie.viewers}:`);
+    console.log(`Reproducciones: ${serie.reproducciones}:`);
+    console.log(`Calificaciòn: ${serie.calificacion}:`); // Muestra la calificaciòn
+    console.log('--------------------');
+});
+// Usando Filter para filtrar, y mal para transformar la informaciòn
+// Lista de series que queremos verificar
+let seriesDeseadas = ["The Walking Dead", "Invincible", "The Boys"];
+// Usando map e includes para filtrar y obtener los nombres de series con 3 temporadas
+let seriesConTresTemporadas = seriesTrending2
+    .filter(serie => serie.temporadas <= 3) // Filtramos las series que tienen 3 temporadas
+    .map(serie => serie.nombre) // Obtenemos solo los nombres de esas series
+    .filter(nombre => seriesDeseadas.includes(nombre)); // Filtramos las que estàn en la lista de series deseadas
+// Mostrar los resultados
+console.log("Series con 3 temporadas que estàn en la lista deseada: ");
+console.table(seriesConTresTemporadas);
