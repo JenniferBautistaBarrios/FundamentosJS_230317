@@ -1,7 +1,7 @@
 // Ejercicio 5
-const bg ="linear-gradient(11deg, rgba(3,0,6,5) 0%, rgba(7,7,131,1) 23%, rgba(0,912,155,3) 86%)";
+const bg ="linear-gradient(11deg, rgba(174, 63, 120, 0.8) 23%, rgba(219, 155, 241, 0.8) 86%)";
 
-const style_console=`background:${bg}; color: white;border-radius: 6px; padding: 4px: font-size: 1.0rem; font-weight: bold`
+const style_console=`background:${bg}; color: white;border-radius: 6px; padding: 8px: font-size: 1.5rem; font-weight: bold`
 
 console.warn ("--- Practica 07 Arreglos de JS ");
 
